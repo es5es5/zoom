@@ -1,7 +1,15 @@
 import express from 'express'
 
+
 const app = express()
 
-console.log('Hi')
+app.set('view engine', 'pug')
+app.set('views', __dirname + '/views')
 
-app.listen(3001)
+app.get('/', (req, res) => res.render('home'))
+
+const PROTOCOL = 'http'
+const HOST = 'localhost'
+const PORT = 3001
+
+app.listen(PORT, () => console.log(`Listening on ${PROTOCOL}://${HOST}:${PORT}`))
