@@ -19,4 +19,10 @@ const handleListen = () => console.log(`Listening on ${PROTOCOL}://${HOST}:${POR
 const server = http.createServer(app)
 const wss = new WebSocketServer({ server })
 
+const handleConnection = (socket) => {
+  console.log(socket)
+}
+
+wss.on('connection', handleConnection)
+
 server.listen(PORT, handleListen)
