@@ -19,13 +19,17 @@ const handleListen = () => console.log(`Listening on ${PROTOCOL}://${HOST}:${POR
 const server = http.createServer(app)
 const wss = new WebSocketServer({ server })
 
+const sockets = []
+
 wss.on('connection', socket => {
+  sockets.push(socket)
   console.log('Connected to Browser.')
   socket.on('close', () => console.log('Disconnected from Browser.'))
   socket.on('message', message => {
-    console.log(message)
+    sockets.forEach(item => {
+      item.send(message.toString('ascii'))
+    })
   })
-  socket.send('hello!!')
 })
 
 server.listen(PORT, handleListen)
