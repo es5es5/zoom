@@ -37,7 +37,6 @@ function handleNicknameSubmit(event) {
   event.preventDefault()
   const input = nicknameForm.querySelector('input')
   socket.send(makeMessage('nickname', input.value))
-  input.value = ''
 }
 
 messageForm.addEventListener('submit', handleSubmit)
