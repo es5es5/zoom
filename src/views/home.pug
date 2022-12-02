@@ -10,7 +10,10 @@ html(lang="en")
       h1 Zoom
     main
       ul
-      form
+      form#nickname
+        input(type="text", name="", placeholder="nickname" required)
+        button(type="submit") Send
+      form#message
         input(type="text", name="", placeholder="message" required)
         button(type="submit") Send
     script(src="/public/js/app.js")
